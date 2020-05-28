@@ -28,17 +28,21 @@ namespace Exercise1
         {
             foreach (string cell in arrayString)
             {
-                if (cell.All(char.IsDigit) && !String.IsNullOrEmpty(cell))
+                if (!String.IsNullOrEmpty(cell) && cell.All(char.IsDigit))
                 {
-                    validate = true;
+                    bool isParsable = Int32.TryParse(cell, out );
+                    if (!isParsable)
+                    {
+                        msg.BadSeries();
+                    }
+                    //validate = true;
                 }
                 else { validate = false; } 
             }
         }
         public void ConvertArray()
         {
-            arrayInt = Array.ConvertAll(arrayString, int.Parse);
-            //arrayInt = someArraySeries.Select(int.Parse).ToArray();
+            //arrayInt = Array.ConvertAll(arrayString, int.Parse);
         }
         public void Go()
         {
