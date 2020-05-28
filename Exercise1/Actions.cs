@@ -9,52 +9,68 @@ namespace Exercise1
     class Actions
     {
         Messages msg = new Messages();
-        public string someSeries;
-        public string[] someArraySeries;
-        public int[] ints;
-        public ConsoleKeyInfo klawisz;
+        public string userString;
+        public string[] arrayString;
+        public int[] arrayInt;
+        public ConsoleKeyInfo endKey;
+        public bool validate;
 
-        public string ReadSeries()
+        public string ReadString()
         {
-            someSeries = Console.ReadLine();
-            return someSeries;
+            userString = Console.ReadLine();
+            return userString;
         }
-        public int[] ConvertSeries()
+        public string[] StringToArray()
         {
-            someArraySeries = someSeries.Trim().Split(',');
-            //ints = someArraySeries.Select(int.Parse).ToArray();
-            ints = Array.ConvertAll(someArraySeries, int.Parse);
-            return ints;
+            arrayString = userString.Split(',');
+            return arrayString;
+        }
+        public bool Validate()
+        {
+            foreach (string cell in arrayString)
+            {
+                if (cell.All(char.IsDigit))
+                {
+                    validate = true;
+                }
+                else { validate = false; } 
+            }
+            return validate;
+        }
+        public int[] ConvertArray()
+        {
+            arrayInt = Array.ConvertAll(arrayString, int.Parse);
+            //arrayInt = someArraySeries.Select(int.Parse).ToArray();
+            return arrayInt;
         }
         public void Go()
         {
             msg.Command();
-            ReadSeries();
+            ReadString();
         }
         public ConsoleKeyInfo Question()
         {
             msg.YesNo();
-            klawisz = Console.ReadKey();
-            
-            return klawisz;
+            endKey = Console.ReadKey();            
+            return endKey;
         }
         public void WriteSeries()
         {
             Console.Write("Podany ciąg to: ");
-            for (int w = 0; w < ints.Length; w++)
+            for (int w = 0; w < arrayInt.Length; w++)
             {
-                Console.Write(ints[w] + " ");
+                Console.Write(arrayInt[w] + " ");
             }
             Console.WriteLine();
         }
         public void Even()
         {
             Console.Write("Parzyste: ");
-            for (int e = 0; e < ints.Length; e++)
+            for (int e = 0; e < arrayInt.Length; e++)
             {
-                if (ints[e] % 2 == 0)
+                if (arrayInt[e] % 2 == 0)
                 {
-                    Console.Write(ints[e] + " ");
+                    Console.Write(arrayInt[e] + " ");
                 }
             }
             Console.WriteLine();
@@ -62,11 +78,11 @@ namespace Exercise1
         public void Odd()
         {
             Console.Write("Nieparzyste: ");
-            for (int o = 0; o < ints.Length; o++)
+            for (int o = 0; o < arrayInt.Length; o++)
             {
-                if (ints[o] % 2 != 0)
+                if (arrayInt[o] % 2 != 0)
                 {
-                    Console.Write(ints[o] + " ");
+                    Console.Write(arrayInt[o] + " ");
                 }
             }
             Console.WriteLine();
@@ -74,9 +90,9 @@ namespace Exercise1
         public void Sum()
         {
             int score = 0;
-            for (int s = 0; s < ints.Length; s++)
+            for (int s = 0; s < arrayInt.Length; s++)
             {
-                score += ints[s];
+                score += arrayInt[s];
             }
             if (score % 2 == 0)
             {

@@ -17,28 +17,34 @@ namespace Exercise1
             do
             {
                 act.Go();
-                if (!String.IsNullOrEmpty(act.someSeries))
+                if (!String.IsNullOrEmpty(act.userString))
                 {
-                    act.ConvertSeries();
-                    act.WriteSeries();
-                    act.Even();
-                    act.Odd();
-                    act.Sum();
-                    do
+                    act.StringToArray();
+                    act.Validate();
+                    if (act.validate == true)
                     {
-                        act.Question();
-                        if (act.klawisz.Key == ConsoleKey.N)
+                        act.ConvertArray();
+                        act.WriteSeries();
+                        act.Even();
+                        act.Odd();
+                        act.Sum();
+                        do
                         {
-                            Environment.Exit(0);
+                            act.Question();
+                            if (act.endKey.Key == ConsoleKey.N)
+                            {
+                                Environment.Exit(0);
+                            }
+                            if (act.endKey.Key != ConsoleKey.Y && act.endKey.Key != ConsoleKey.N)
+                            {
+                                msg.YouDoItWrong();
+                            }
                         }
-                        if (act.klawisz.Key != ConsoleKey.Y || act.klawisz.Key != ConsoleKey.N)
-                        {
-                            msg.YouDoItWrong();
-                        }
+                        while (act.endKey.Key != ConsoleKey.Y);
                     }
-                    while (act.klawisz.Key != ConsoleKey.Y);
+                    else { msg.BadSeries(); }
                 }
-                else { msg.EmptySeries(); }
+                else { msg.EmptyString(); }
             }
             while (exit == true);
         }
