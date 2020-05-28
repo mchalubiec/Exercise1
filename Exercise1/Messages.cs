@@ -28,6 +28,7 @@ namespace Exercise1
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Nie rozpoznano klawisza.");
+            Console.WriteLine();
         }
         public void YesNo()
         {
