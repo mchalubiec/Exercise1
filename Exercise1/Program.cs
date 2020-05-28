@@ -28,12 +28,12 @@ namespace Exercise1
                     {
                         act.Question();
                         while (Console.KeyAvailable == false)
-                        if (act.klawisz.Key == ConsoleKey.Y)
+                        if (act.klawisz.Key == ConsoleKey.N)
                         {
                             Environment.Exit(0);
                         }
                     }
-                    while (act.klawisz.Key != ConsoleKey.N);
+                    while (act.klawisz.Key != ConsoleKey.Y);
                 }
                 else { msg.EmptySeries(); }
             }
