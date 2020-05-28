@@ -25,9 +25,9 @@ namespace Exercise1
                     {
                         act.ConvertArray();
                         act.WriteSeries();
-                        act.Even();
-                        act.Odd();
-                        act.Sum();
+                        act.WriteEven();
+                        act.WriteOdd();
+                        act.WriteSum();
                         do
                         {
                             act.Question();

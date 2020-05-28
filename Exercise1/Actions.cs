@@ -60,7 +60,7 @@ namespace Exercise1
             }
             Console.WriteLine();
         }
-        public void Even()
+        public void WriteEven()
         {
             Console.Write("Parzyste: ");
             for (int e = 0; e < arrayInt.Length; e++)
@@ -72,7 +72,7 @@ namespace Exercise1
             }
             Console.WriteLine();
         }
-        public void Odd()
+        public void WriteOdd()
         {
             Console.Write("Nieparzyste: ");
             for (int o = 0; o < arrayInt.Length; o++)
@@ -84,7 +84,7 @@ namespace Exercise1
             }
             Console.WriteLine();
         }
-        public void Sum()
+        public void WriteSum()
         {
             int score = 0;
             for (int s = 0; s < arrayInt.Length; s++)
