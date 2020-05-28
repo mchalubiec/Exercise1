@@ -27,10 +27,15 @@ namespace Exercise1
                     do
                     {
                         act.Question();
-                        while (Console.KeyAvailable == false)
+                        //while (Console.KeyAvailable == false)
                         if (act.klawisz.Key == ConsoleKey.N)
                         {
                             Environment.Exit(0);
+                        }
+                        if (act.klawisz.Key != ConsoleKey.Y || act.klawisz.Key != ConsoleKey.N)
+                        {
+                            msg.YouDoItWrong();
+                            continue;
                         }
                     }
                     while (act.klawisz.Key != ConsoleKey.Y);
@@ -38,11 +43,6 @@ namespace Exercise1
                 else { msg.EmptySeries(); }
             }
             while (exit == true);
-
-
-
-
-            Console.ReadKey();
         }
     }
 }
