@@ -24,17 +24,16 @@ namespace Exercise1
         {
             arrayString = userString.Split(',');
         }
-        public bool Validate()
+        public void Validate()
         {
             foreach (string cell in arrayString)
             {
-                if (cell.All(char.IsDigit) && String.IsNullOrEmpty(cell))
+                if (cell.All(char.IsDigit) && !String.IsNullOrEmpty(cell))
                 {
                     validate = true;
                 }
                 else { validate = false; } 
             }
-            return validate;
         }
         public void ConvertArray()
         {
@@ -49,7 +48,7 @@ namespace Exercise1
         public void Question()
         {
             msg.YesNo();
-            endKey = Console.ReadKey();            
+            endKey = Console.ReadKey(true);            
         }
         public void WriteSeries()
         {
