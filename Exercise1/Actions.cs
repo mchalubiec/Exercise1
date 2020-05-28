@@ -9,7 +9,6 @@ namespace Exercise1
     class Actions
     {
         public string someSeries;
-        public int[] ints;
 
         public string ReadSeries()
         {
@@ -19,7 +18,8 @@ namespace Exercise1
         {
             string[] someArraySeries = new string[] { someSeries };
             someArraySeries = someSeries.Replace(" ", "").Split(',');
-            int[] ints = Array.ConvertAll(someArraySeries, int.Parse);
+            int[] ints = someArraySeries.Select(int.Parse).ToArray();
+            //int[] ints = Array.ConvertAll(someArraySeries, int.Parse);
             return ints;
         }
 
@@ -32,6 +32,7 @@ namespace Exercise1
                     Console.WriteLine(ints[e] + "parzysta");
                 }
             }
+
         }
         public void Odd()
         {

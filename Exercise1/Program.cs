@@ -15,7 +15,9 @@ namespace Exercise1
 
             msg.Command();
             act.ReadSeries();
-            //if (String.IsNullOrEmpty(someSeries))
+            act.ConvertSeries();
+            //foreach (var cell in act.ReadSeries())
+            //if (String.IsNullOrEmpty(cell))
             //{
             //    msg.EmptySeries();
             //    msg.Command();
