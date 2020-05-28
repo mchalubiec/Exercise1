@@ -9,6 +9,7 @@ namespace Exercise1
     class Actions
     {
         public string someSeries;
+        public int[] ints;
 
         public string ReadSeries()
         {
