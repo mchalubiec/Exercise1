@@ -13,15 +13,16 @@ namespace Exercise1
             Messages msg = new Messages();
             Actions act = new Actions();        
 
+
             msg.Command();
             act.ReadSeries();
             act.ConvertSeries();
-            //foreach (var cell in act.ReadSeries())
-            //if (String.IsNullOrEmpty(cell))
-            //{
-            //    msg.EmptySeries();
-            //    msg.Command();
-            //}
+            //foreach (var cell in act.ints)
+            //    if (String.IsNullOrEmpty(cell))
+            //    {
+            //        msg.EmptySeries();
+            //        msg.Command();
+            //    }
 
             // parzyste
             act.Even();
@@ -31,6 +32,7 @@ namespace Exercise1
 
             // suma elementów tablicy
             act.Sum();
+            
 
             Console.WriteLine("Czy chcesz spróbować ponownie? (Y/N)");
             ConsoleKeyInfo klawisz;

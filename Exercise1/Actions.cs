@@ -9,41 +9,45 @@ namespace Exercise1
     class Actions
     {
         public string someSeries;
+        public string[] someArraySeries;
         public int[] ints;
 
         public string ReadSeries()
         {
-            return someSeries = Console.ReadLine();
+            someSeries = Console.ReadLine();
+            return someSeries;
         }
         public int[] ConvertSeries()
         {
-            string[] someArraySeries = new string[] { someSeries };
-            someArraySeries = someSeries.Replace(" ", "").Split(',');
-            int[] ints = someArraySeries.Select(int.Parse).ToArray();
-            //int[] ints = Array.ConvertAll(someArraySeries, int.Parse);
+            someArraySeries = someSeries.Trim().Split(',');
+            //ints = someArraySeries.Select(int.Parse).ToArray();
+            ints = Array.ConvertAll(someArraySeries, int.Parse);
             return ints;
-        }
 
+        }
         public void Even()
         {
+            Console.Write("Parzyste: ");
             for (int e = 0; e < ints.Length; e++)
             {
                 if (ints[e] % 2 == 0)
                 {
-                    Console.WriteLine(ints[e] + "parzysta");
+                    Console.Write(ints[e] + " ");
                 }
             }
-
+            Console.WriteLine();
         }
         public void Odd()
         {
+            Console.Write("Nieparzyste: ");
             for (int o = 0; o < ints.Length; o++)
             {
-                if (ints[o] % 2 == 1)
+                if (ints[o] % 2 != 0)
                 {
-                    Console.WriteLine(ints[o] + "nieparzysta");
+                    Console.Write(ints[o] + " ");
                 }
             }
+            Console.WriteLine();
         }
         public void Sum()
         {
@@ -52,7 +56,16 @@ namespace Exercise1
             {
                 score += ints[s];
             }
-            Console.WriteLine(score + "suma");
+            Console.WriteLine($"Suma: {score}");
+            if (score %2 == 1)
+            {
+                Console.WriteLine(" jest nieparzyste.");
+            }
+            if (score % 2 == 0)
+            {
+                Console.WriteLine(" jest parzyste.");
+            }
+            Console.WriteLine();
         }
     }
 }
