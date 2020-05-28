@@ -8,9 +8,11 @@ namespace Exercise1
 {
     class Actions
     {
+        Messages msg = new Messages();
         public string someSeries;
         public string[] someArraySeries;
         public int[] ints;
+        public ConsoleKeyInfo klawisz;
 
         public string ReadSeries()
         {
@@ -23,7 +25,27 @@ namespace Exercise1
             //ints = someArraySeries.Select(int.Parse).ToArray();
             ints = Array.ConvertAll(someArraySeries, int.Parse);
             return ints;
-
+        }
+        public void Go()
+        {
+            msg.Command();
+            ReadSeries();
+        }
+        public ConsoleKeyInfo Question()
+        {
+            msg.YesNo();
+            klawisz = Console.ReadKey();
+            
+            return klawisz;
+        }
+        public void WriteSeries()
+        {
+            Console.Write("Podany ciąg to: ");
+            for (int w = 0; w < ints.Length; w++)
+            {
+                Console.Write(ints[w] + " ");
+            }
+            Console.WriteLine();
         }
         public void Even()
         {
@@ -56,15 +78,11 @@ namespace Exercise1
             {
                 score += ints[s];
             }
-            Console.WriteLine($"Suma: {score}");
-            if (score %2 == 1)
-            {
-                Console.WriteLine(" jest nieparzyste.");
-            }
             if (score % 2 == 0)
             {
-                Console.WriteLine(" jest parzyste.");
+                Console.WriteLine($"Suma ciągu wynosi: {score} i jest parzysta.");
             }
+            else { Console.WriteLine($"Suma ciągu wynosi: {score} i jest nieparzysta."); }
             Console.WriteLine();
         }
     }

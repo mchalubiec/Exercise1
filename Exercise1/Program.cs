@@ -11,46 +11,36 @@ namespace Exercise1
         static void Main(string[] args)
         {
             Messages msg = new Messages();
-            Actions act = new Actions();        
+            Actions act = new Actions();
 
-
-            msg.Command();
-            act.ReadSeries();
-            act.ConvertSeries();
-            //foreach (var cell in act.ints)
-            //    if (String.IsNullOrEmpty(cell))
-            //    {
-            //        msg.EmptySeries();
-            //        msg.Command();
-            //    }
-
-            // parzyste
-            act.Even();
-
-            // nieparzyste
-            act.Odd();
-
-            // suma elementów tablicy
-            act.Sum();
-            
-
-            Console.WriteLine("Czy chcesz spróbować ponownie? (Y/N)");
-            ConsoleKeyInfo klawisz;
-            klawisz = Console.ReadKey();
-            if (klawisz.Key == ConsoleKey.Y)
+            bool exit = true;
+            do
             {
-                msg.Command();
+                act.Go();
+                if (!String.IsNullOrEmpty(act.someSeries))
+                {
+                    act.ConvertSeries();
+                    act.WriteSeries();
+                    act.Even();
+                    act.Odd();
+                    act.Sum();
+                    do
+                    {
+                        act.Question();
+                        while (Console.KeyAvailable == false)
+                        if (act.klawisz.Key == ConsoleKey.Y)
+                        {
+                            Environment.Exit(0);
+                        }
+                    }
+                    while (act.klawisz.Key != ConsoleKey.N);
+                }
+                else { msg.EmptySeries(); }
             }
-            if (klawisz.Key == ConsoleKey.N)
-            {
-                Environment.Exit(0);
-            }
-            if (klawisz.Key != ConsoleKey.Y && klawisz.Key != ConsoleKey.N)
-            {
+            while (exit == true);
 
-                Console.WriteLine("Czy chcesz spróbować ponownie? (Y/N)");
-            }
-            else Environment.Exit(0);
+
+
 
             Console.ReadKey();
         }

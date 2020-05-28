@@ -10,6 +10,7 @@ namespace Exercise1
     {
         public void Command()
         {
+            Console.Clear();
             Console.ResetColor();
             Console.WriteLine("Podaj ciąg liczbowy (dowolnej długości), oddzielając cyfry przecinkiem: ");
         }
@@ -30,6 +31,7 @@ namespace Exercise1
         }
         public void YesNo()
         {
+            Console.ResetColor();
             Console.WriteLine("Czy chcesz spróbować ponownie? (Y/N)");
         }
     }
