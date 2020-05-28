@@ -8,6 +8,7 @@ namespace Exercise1
 {
     class Actions
     {
+        
         Messages msg = new Messages();
         public string userString;
         public string[] arrayString;
@@ -15,21 +16,19 @@ namespace Exercise1
         public ConsoleKeyInfo endKey;
         public bool validate;
 
-        public string ReadString()
+        public void ReadString()
         {
             userString = Console.ReadLine();
-            return userString;
         }
-        public string[] StringToArray()
+        public void StringToArray()
         {
             arrayString = userString.Split(',');
-            return arrayString;
         }
         public bool Validate()
         {
             foreach (string cell in arrayString)
             {
-                if (cell.All(char.IsDigit))
+                if (cell.All(char.IsDigit) && String.IsNullOrEmpty(cell))
                 {
                     validate = true;
                 }
@@ -37,22 +36,20 @@ namespace Exercise1
             }
             return validate;
         }
-        public int[] ConvertArray()
+        public void ConvertArray()
         {
             arrayInt = Array.ConvertAll(arrayString, int.Parse);
             //arrayInt = someArraySeries.Select(int.Parse).ToArray();
-            return arrayInt;
         }
         public void Go()
         {
             msg.Command();
             ReadString();
         }
-        public ConsoleKeyInfo Question()
+        public void Question()
         {
             msg.YesNo();
             endKey = Console.ReadKey();            
-            return endKey;
         }
         public void WriteSeries()
         {
