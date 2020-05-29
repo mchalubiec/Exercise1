@@ -29,19 +29,24 @@ namespace Exercise1
             foreach (string cell in arrayString)
             {
                 if (!String.IsNullOrEmpty(cell) && cell.All(char.IsDigit))
-                {
-                    bool isParsable = Int32.TryParse(cell, out );
-                    if (!isParsable)
-                    {
-                        msg.BadSeries();
-                    }
-                    //validate = true;
+                {                    
+                    validate = true;
                 }
-                else { validate = false; } 
+                else { validate = false; }
             }
         }
         public void ConvertArray()
         {
+            foreach (var value in arrayString)
+            {
+                int result;
+                bool isParsable = Int32.TryParse(value, out result);
+                if (!isParsable)
+                {
+                    msg.BadSeries();
+                }
+                arrayInt[] = result;
+            }
             //arrayInt = Array.ConvertAll(arrayString, int.Parse);
         }
         public void Go()
