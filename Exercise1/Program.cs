@@ -43,7 +43,7 @@ namespace Exercise1
                                 }
                             }
                             while (act.endKey.Key != ConsoleKey.Y);
-                        } else { msg.BadSeries(); }                        
+                        } else { msg.BadSeries(); }
                     }
                     else { msg.EmptyField(); }
                 }

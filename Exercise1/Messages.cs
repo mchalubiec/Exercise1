@@ -29,7 +29,7 @@ namespace Exercise1
         {
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("W podanym ciągu brakuje liczb.");
+            Console.WriteLine("W podanym ciągu brakuje liczb(y).");
             Console.WriteLine();
         }
         public void YouDoItWrong()

@@ -43,7 +43,7 @@ namespace Exercise1
             List<int> list = new List<int>();
             foreach (var value in arrayString)
             {
-                isParsable = Int32.TryParse(value, out result);
+                isParsable = int.TryParse(value, out result);
                 if (!isParsable)
                 {
                     return;
@@ -63,7 +63,7 @@ namespace Exercise1
             endKey = Console.ReadKey(true);
         }
         /// <summary>
-        /// 
+        /// Write string
         /// </summary>
         public void WriteSeries()
         {
