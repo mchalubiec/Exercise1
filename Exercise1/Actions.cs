@@ -15,6 +15,7 @@ namespace Exercise1
         public int[] arrayInt;
         public ConsoleKeyInfo endKey;
         public bool validate;
+        public int result;
 
         public void ReadString()
         {
@@ -37,17 +38,17 @@ namespace Exercise1
         }
         public void ConvertArray()
         {
+            List<int> list = new List<int>();
             foreach (var value in arrayString)
             {
-                int result;
                 bool isParsable = Int32.TryParse(value, out result);
                 if (!isParsable)
                 {
                     msg.BadSeries();
                 }
-                arrayInt[] = result;
+                list.Add(result);
             }
-            //arrayInt = Array.ConvertAll(arrayString, int.Parse);
+            arrayInt = list.ToArray();
         }
         public void Go()
         {
