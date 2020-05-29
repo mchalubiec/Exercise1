@@ -20,8 +20,17 @@ namespace Exercise1
         }
         public void BadSeries()
         {
+            Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Podany ciąg zawiera litery lub znaki specjalne.");
+            Console.WriteLine();
+        }
+        public void EmptyField()
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("W podanym ciągu brakuje liczb.");
+            Console.WriteLine();
         }
         public void YouDoItWrong()
         {
@@ -33,6 +42,7 @@ namespace Exercise1
         {
             Console.ResetColor();
             Console.WriteLine("Czy chcesz spróbować ponownie? (Y/N)");
+            Console.WriteLine();
         }
     }
 }

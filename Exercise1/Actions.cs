@@ -8,15 +8,17 @@ namespace Exercise1
 {
     class Actions
     {
-
         Messages msg = new Messages();
+        #region fields
         public string userString;
         public string[] arrayString;
         public int[] arrayInt;
         public ConsoleKeyInfo endKey;
         public bool validate;
         public int result;
-
+        public bool isParsable;
+        #endregion
+        #region methods
         public void ReadString()
         {
             userString = Console.ReadLine();
@@ -27,30 +29,24 @@ namespace Exercise1
         }
         public void Validate()
         {
-            int counter =0;
             foreach (string cell in arrayString)
             {
-                if (!String.IsNullOrEmpty(cell) && cell.All(char.IsDigit))
+                if (!String.IsNullOrEmpty(cell))
                 {
-                    counter++;
+                    validate = true;
                 }
+                else { validate = false; return; }
             }
-
-            if (counter == arrayString.Length)
-            {
-                validate = true;
-            }
-            else { validate = false; }
         }
         public void ConvertArray()
         {
             List<int> list = new List<int>();
             foreach (var value in arrayString)
             {
-                bool isParsable = Int32.TryParse(value, out result);
+                isParsable = Int32.TryParse(value, out result);
                 if (!isParsable)
                 {
-                    msg.BadSeries();
+                    return;
                 }
                 else { list.Add(result); }
             }
@@ -66,6 +62,9 @@ namespace Exercise1
             msg.YesNo();
             endKey = Console.ReadKey(true);
         }
+        /// <summary>
+        /// 
+        /// </summary>
         public void WriteSeries()
         {
             Console.WriteLine();
@@ -76,6 +75,9 @@ namespace Exercise1
             }
             Console.WriteLine();
         }
+        /// <summary>
+        /// Check which numbers in string are even and write them.
+        /// </summary>
         public void WriteEven()
         {
             Console.Write("b. Parzyste: ");
@@ -88,6 +90,9 @@ namespace Exercise1
             }
             Console.WriteLine();
         }
+        /// <summary>
+        /// Check which numbers in string are odd and write them.
+        /// </summary>
         public void WriteOdd()
         {
             Console.Write("c. Nieparzyste: ");
@@ -100,6 +105,9 @@ namespace Exercise1
             }
             Console.WriteLine();
         }
+        /// <summary>
+        /// Write sum all elements of string, check even/odd this sum and write it.
+        /// </summary>
         public void WriteSum()
         {
             int score = 0;
@@ -114,5 +122,6 @@ namespace Exercise1
             else { Console.WriteLine($"Suma ciągu wynosi: {score} i jest liczbą nieparzystą."); }
             Console.WriteLine();
         }
+        #endregion
     }
 }

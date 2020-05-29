@@ -24,25 +24,28 @@ namespace Exercise1
                     if (act.validate == true)
                     {
                         act.ConvertArray();
-                        act.WriteSeries();
-                        act.WriteEven();
-                        act.WriteOdd();
-                        act.WriteSum();
-                        do
+                        if (act.isParsable == true)
                         {
-                            act.Question();
-                            if (act.endKey.Key == ConsoleKey.N)
+                            act.WriteSeries();
+                            act.WriteEven();
+                            act.WriteOdd();
+                            act.WriteSum();
+                            do
                             {
-                                Environment.Exit(0);
+                                act.Question();
+                                if (act.endKey.Key == ConsoleKey.N)
+                                {
+                                    Environment.Exit(0);
+                                }
+                                if (act.endKey.Key != ConsoleKey.Y && act.endKey.Key != ConsoleKey.N)
+                                {
+                                    msg.YouDoItWrong();
+                                }
                             }
-                            if (act.endKey.Key != ConsoleKey.Y && act.endKey.Key != ConsoleKey.N)
-                            {
-                                msg.YouDoItWrong();
-                            }
-                        }
-                        while (act.endKey.Key != ConsoleKey.Y);
+                            while (act.endKey.Key != ConsoleKey.Y);
+                        } else { msg.BadSeries(); }                        
                     }
-                    else { msg.BadSeries(); }
+                    else { msg.EmptyField(); }
                 }
                 else { msg.EmptyString(); }
             }
