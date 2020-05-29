@@ -8,7 +8,7 @@ namespace Exercise1
 {
     class Actions
     {
-        
+
         Messages msg = new Messages();
         public string userString;
         public string[] arrayString;
@@ -27,14 +27,20 @@ namespace Exercise1
         }
         public void Validate()
         {
+            int counter =0;
             foreach (string cell in arrayString)
             {
                 if (!String.IsNullOrEmpty(cell) && cell.All(char.IsDigit))
-                {                    
-                    validate = true;
+                {
+                    counter++;
                 }
-                else { validate = false; }
             }
+
+            if (counter == arrayString.Length)
+            {
+                validate = true;
+            }
+            else { validate = false; }
         }
         public void ConvertArray()
         {
@@ -46,7 +52,7 @@ namespace Exercise1
                 {
                     msg.BadSeries();
                 }
-                list.Add(result);
+                else { list.Add(result); }
             }
             arrayInt = list.ToArray();
         }
@@ -58,11 +64,12 @@ namespace Exercise1
         public void Question()
         {
             msg.YesNo();
-            endKey = Console.ReadKey(true);            
+            endKey = Console.ReadKey(true);
         }
         public void WriteSeries()
         {
-            Console.Write("Podany ciąg to: ");
+            Console.WriteLine();
+            Console.Write("a. Podany ciąg to: ");
             for (int w = 0; w < arrayInt.Length; w++)
             {
                 Console.Write(arrayInt[w] + " ");
@@ -71,7 +78,7 @@ namespace Exercise1
         }
         public void WriteEven()
         {
-            Console.Write("Parzyste: ");
+            Console.Write("b. Parzyste: ");
             for (int e = 0; e < arrayInt.Length; e++)
             {
                 if (arrayInt[e] % 2 == 0)
@@ -83,7 +90,7 @@ namespace Exercise1
         }
         public void WriteOdd()
         {
-            Console.Write("Nieparzyste: ");
+            Console.Write("c. Nieparzyste: ");
             for (int o = 0; o < arrayInt.Length; o++)
             {
                 if (arrayInt[o] % 2 != 0)
@@ -102,9 +109,9 @@ namespace Exercise1
             }
             if (score % 2 == 0)
             {
-                Console.WriteLine($"Suma ciągu wynosi: {score} i jest parzysta.");
+                Console.WriteLine($"d. Suma ciągu wynosi: {score} i jest liczbą parzystą.");
             }
-            else { Console.WriteLine($"Suma ciągu wynosi: {score} i jest nieparzysta."); }
+            else { Console.WriteLine($"Suma ciągu wynosi: {score} i jest liczbą nieparzystą."); }
             Console.WriteLine();
         }
     }
