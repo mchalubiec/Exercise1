@@ -10,46 +10,27 @@ namespace Exercise1
     {
         static void Main(string[] args)
         {
-            Messages msg = new Messages();
             Actions act = new Actions();
 
-            bool exit = true;
+
             do
             {
-                act.Go();
-                if (!String.IsNullOrEmpty(act.userString))
+                act.Start();
+                if (act.validate == true)
                 {
-                    act.StringToArray();
-                    act.Validate();
+                    act.ConvertString();
                     if (act.validate == true)
                     {
-                        act.ConvertArray();
-                        if (act.isParsable == true)
+                        act.Display();
+                        do
                         {
-                            act.WriteSeries();
-                            act.WriteEven();
-                            act.WriteOdd();
-                            act.WriteSum();
-                            do
-                            {
-                                act.Question();
-                                if (act.endKey.Key == ConsoleKey.N)
-                                {
-                                    Environment.Exit(0);
-                                }
-                                if (act.endKey.Key != ConsoleKey.Y && act.endKey.Key != ConsoleKey.N)
-                                {
-                                    msg.YouDoItWrong();
-                                }
-                            }
-                            while (act.endKey.Key != ConsoleKey.Y);
-                        } else { msg.BadSeries(); }
+                            act.End();
+                        }
+                        while (act.exit == true);
                     }
-                    else { msg.EmptyField(); }
                 }
-                else { msg.EmptyString(); }
             }
-            while (exit == true);
+            while (act.exit == false);
         }
     }
 }

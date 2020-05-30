@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise1
 {
     class Messages
     {
-        public void Command()
+        #region methods
+        public void Instruction()
         {
             Console.ResetColor();
             Console.WriteLine("Podaj ciąg liczbowy (dowolnej długości), oddzielając cyfry przecinkiem: ");
@@ -18,7 +15,7 @@ namespace Exercise1
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Nie podałeś żadnego ciągu.");
         }
-        public void BadSeries()
+        public void WrongString()
         {
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Red;
@@ -32,7 +29,7 @@ namespace Exercise1
             Console.WriteLine("W podanym ciągu brakuje liczb(y).");
             Console.WriteLine();
         }
-        public void YouDoItWrong()
+        public void WrongKey()
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("Nie rozpoznano klawisza.");
@@ -44,5 +41,6 @@ namespace Exercise1
             Console.WriteLine("Czy chcesz spróbować ponownie? (Y/N)");
             Console.WriteLine();
         }
+        #endregion
     }
 }

@@ -1,71 +1,81 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Exercise1
 {
     class Actions
     {
         Messages msg = new Messages();
-        #region fields
+
+        #region Fields
         public string userString;
         public string[] arrayString;
         public int[] arrayInt;
-        public ConsoleKeyInfo endKey;
         public bool validate;
-        public int result;
         public bool isParsable;
+        public int result;
+        public ConsoleKeyInfo endKey;
+        public bool exit;
         #endregion
-        #region methods
+        #region Methods
+        /// <summary>
+        /// Displays instruction and get string from user.
+        /// </summary>
+        public void Start()
+        {
+            msg.Instruction();
+            ReadString();
+        }
+        /// <summary>
+        /// Read any string from user and validate is it empty string.
+        /// </summary>
         public void ReadString()
         {
             userString = Console.ReadLine();
+            if (!String.IsNullOrEmpty(userString))
+            {
+                validate = true;
+            }
+            else{ msg.EmptyString(); return; }
         }
-        public void StringToArray()
+        /// <summary>
+        /// Converts user string to array string, next converts to array int with validate.
+        /// </summary>
+        public void ConvertString()
         {
             arrayString = userString.Split(',');
-        }
-        public void Validate()
-        {
-            foreach (string cell in arrayString)
+
+            List<int> list = new List<int>();
+            foreach (string value in arrayString)
             {
-                if (!String.IsNullOrEmpty(cell))
+                if (!String.IsNullOrEmpty(value))
                 {
                     validate = true;
+                    isParsable = int.TryParse(value, out result);
+                    if (isParsable)
+                    {
+                        list.Add(result);
+                    }
+                    else { validate = false; msg.WrongString();  return; }
                 }
-                else { validate = false; return; }
-            }
-        }
-        public void ConvertArray()
-        {
-            List<int> list = new List<int>();
-            foreach (var value in arrayString)
-            {
-                isParsable = int.TryParse(value, out result);
-                if (!isParsable)
-                {
-                    return;
-                }
-                else { list.Add(result); }
+                else { validate = false; msg.EmptyField(); return; }
             }
             arrayInt = list.ToArray();
         }
-        public void Go()
+        /// <summary>
+        /// Display tasks.
+        /// </summary>
+        public void Display()
         {
-            msg.Command();
-            ReadString();
-        }
-        public void Question()
-        {
-            msg.YesNo();
-            endKey = Console.ReadKey(true);
+            WriteString();
+            WriteEven();
+            WriteOdd();
+            WriteSum();
         }
         /// <summary>
-        /// Write string
+        /// Write all elements of string given by user.
         /// </summary>
-        public void WriteSeries()
+        public void WriteString()
         {
             Console.WriteLine();
             Console.Write("a. Podany ciąg to: ");
@@ -76,7 +86,7 @@ namespace Exercise1
             Console.WriteLine();
         }
         /// <summary>
-        /// Check which numbers in string are even and write them.
+        /// Check which elements of string are even and write them.
         /// </summary>
         public void WriteEven()
         {
@@ -91,7 +101,7 @@ namespace Exercise1
             Console.WriteLine();
         }
         /// <summary>
-        /// Check which numbers in string are odd and write them.
+        /// Check which elements of string are odd and write them.
         /// </summary>
         public void WriteOdd()
         {
@@ -119,8 +129,23 @@ namespace Exercise1
             {
                 Console.WriteLine($"d. Suma ciągu wynosi: {score} i jest liczbą parzystą.");
             }
-            else { Console.WriteLine($"Suma ciągu wynosi: {score} i jest liczbą nieparzystą."); }
+            else { Console.WriteLine($"d. Suma ciągu wynosi: {score} i jest liczbą nieparzystą."); }
             Console.WriteLine();
+        }
+
+        public void End()
+        {
+            msg.YesNo();
+            endKey = Console.ReadKey(true);
+            if (endKey.Key == ConsoleKey.N)
+            {
+                Environment.Exit(0);
+            }
+            if (endKey.Key == ConsoleKey.Y)
+            {
+                exit = true; return;
+            }
+            else { msg.WrongKey(); }
         }
         #endregion
     }
