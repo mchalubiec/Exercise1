@@ -36,7 +36,7 @@ namespace Exercise1
             {
                 validate = true;
             }
-            else{ msg.EmptyString(); return; }
+            else{ validate = false;  msg.EmptyString(); return; }
         }
         /// <summary>
         /// Converts user string to array string, next converts to array int with validate.

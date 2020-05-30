@@ -6,7 +6,7 @@
         {
             Actions act = new Actions();
 
-            do
+            while (true)
             {
                 act.Start();
                 if (act.validate == true)
@@ -23,7 +23,6 @@
                     }
                 }
             }
-            while (act.exit == true);
         }
     }
 }
