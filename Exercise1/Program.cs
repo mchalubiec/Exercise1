@@ -6,7 +6,6 @@
         {
             Actions act = new Actions();
 
-
             do
             {
                 act.Start();
@@ -20,11 +19,11 @@
                         {
                             act.End();
                         }
-                        while (act.exit == true);
+                        while (act.exit == false);
                     }
                 }
             }
-            while (act.exit == false);
+            while (act.exit == true);
         }
     }
 }

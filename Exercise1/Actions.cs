@@ -27,7 +27,7 @@ namespace Exercise1
             ReadString();
         }
         /// <summary>
-        /// Read any string from user and validate is it empty string.
+        /// Reads any string from user and validate is it empty string.
         /// </summary>
         public void ReadString()
         {
@@ -63,7 +63,7 @@ namespace Exercise1
             arrayInt = list.ToArray();
         }
         /// <summary>
-        /// Display tasks.
+        /// Displays tasks.
         /// </summary>
         public void Display()
         {
@@ -73,7 +73,7 @@ namespace Exercise1
             WriteSum();
         }
         /// <summary>
-        /// Write all elements of string given by user.
+        /// Writes all elements of string given by user.
         /// </summary>
         public void WriteString()
         {
@@ -86,7 +86,7 @@ namespace Exercise1
             Console.WriteLine();
         }
         /// <summary>
-        /// Check which elements of string are even and write them.
+        /// Checks which elements of string are even and write them.
         /// </summary>
         public void WriteEven()
         {
@@ -101,7 +101,7 @@ namespace Exercise1
             Console.WriteLine();
         }
         /// <summary>
-        /// Check which elements of string are odd and write them.
+        /// Checks which elements of string are odd and write them.
         /// </summary>
         public void WriteOdd()
         {
@@ -116,7 +116,7 @@ namespace Exercise1
             Console.WriteLine();
         }
         /// <summary>
-        /// Write sum all elements of string, check even/odd this sum and write it.
+        /// Writes sum all elements of string, check even/odd this sum and write it.
         /// </summary>
         public void WriteSum()
         {
@@ -132,7 +132,9 @@ namespace Exercise1
             else { Console.WriteLine($"d. Suma ciągu wynosi: {score} i jest liczbą nieparzystą."); }
             Console.WriteLine();
         }
-
+        /// <summary>
+        /// Asks user whether to end program or start again.
+        /// </summary>
         public void End()
         {
             msg.YesNo();
@@ -143,9 +145,10 @@ namespace Exercise1
             }
             if (endKey.Key == ConsoleKey.Y)
             {
-                exit = true; return;
+                exit = true;
+                return;
             }
-            else { msg.WrongKey(); }
+            else { exit = false; msg.WrongKey(); }
         }
         #endregion
     }

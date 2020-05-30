@@ -4,7 +4,7 @@ namespace Exercise1
 {
     class Messages
     {
-        #region methods
+        #region Methods
         public void Instruction()
         {
             Console.ResetColor();
