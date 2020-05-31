@@ -23,7 +23,7 @@ namespace Exercise1
         /// </summary>
         public void Start()
         {
-            msg.Instruction();
+            msg.DisplayText("Podaj ciąg liczbowy (dowolnej długości), oddzielając cyfry przecinkiem: ");
             ReadString();
         }
         /// <summary>
@@ -36,7 +36,7 @@ namespace Exercise1
             {
                 validate = true;
             }
-            else{ validate = false;  msg.EmptyString(); return; }
+            else { validate = false; msg.DisplayErrorText("Nie podałeś żadnego ciągu."); return; }
         }
         /// <summary>
         /// Converts user string to array string, next converts to array int with validate.
@@ -56,9 +56,9 @@ namespace Exercise1
                     {
                         list.Add(result);
                     }
-                    else { validate = false; msg.WrongString();  return; }
+                    else { validate = false; msg.DisplayErrorText("Podany ciąg zawiera litery lub znaki specjalne."); return; }
                 }
-                else { validate = false; msg.EmptyField(); return; }
+                else { validate = false; msg.DisplayErrorText("W podanym ciągu brakuje liczb(y)."); return; }
             }
             arrayInt = list.ToArray();
         }
@@ -137,7 +137,7 @@ namespace Exercise1
         /// </summary>
         public void End()
         {
-            msg.YesNo();
+            msg.DisplayText("Czy chcesz spróbować ponownie? (Y/N)");
             endKey = Console.ReadKey(true);
             if (endKey.Key == ConsoleKey.N)
             {
@@ -148,7 +148,7 @@ namespace Exercise1
                 exit = true;
                 return;
             }
-            else { exit = false; msg.WrongKey(); }
+            else { exit = false; msg.DisplayErrorText("Nie rozpoznano klawisza."); }
         }
         #endregion
     }
