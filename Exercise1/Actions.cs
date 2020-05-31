@@ -13,30 +13,23 @@ namespace Exercise1
         public int[] arrayInt;
         public bool validate;
         public bool isParsable;
-        public int result;
-        public ConsoleKeyInfo endKey;
-        public bool exit;
+        private ConsoleKeyInfo endKey;
         #endregion
         #region Methods
         /// <summary>
-        /// Displays instruction and get string from user.
+        /// Displays instruction, get string from user and validate is it empty.
         /// </summary>
-        public void Start()
+        public void GetStringAndValidate()
         {
-            msg.DisplayText("Podaj ciąg liczbowy (dowolnej długości), oddzielając cyfry przecinkiem: ");
-            ReadString();
-        }
-        /// <summary>
-        /// Reads any string from user and validate is it empty string.
-        /// </summary>
-        public void ReadString()
-        {
-            userString = Console.ReadLine();
-            if (!String.IsNullOrEmpty(userString))
+            do
             {
-                validate = true;
-            }
-            else { validate = false; msg.DisplayErrorText("Nie podałeś żadnego ciągu."); return; }
+                msg.DisplayText("Podaj ciąg liczbowy (dowolnej długości), oddzielając cyfry przecinkiem: ");
+                userString = Console.ReadLine();
+                if (String.IsNullOrEmpty(userString))
+                {
+                    msg.DisplayErrorText("Nie podałeś żadnego ciągu.");
+                }
+            } while (String.IsNullOrEmpty(userString));
         }
         /// <summary>
         /// Converts user string to array string, next converts to array int with validate.
@@ -50,6 +43,7 @@ namespace Exercise1
             {
                 if (!String.IsNullOrEmpty(value))
                 {
+                    int result;
                     validate = true;
                     isParsable = int.TryParse(value, out result);
                     if (isParsable)
@@ -65,7 +59,7 @@ namespace Exercise1
         /// <summary>
         /// Displays tasks.
         /// </summary>
-        public void Display()
+        public void DisplayTasks()
         {
             WriteString();
             WriteEven();
@@ -135,7 +129,7 @@ namespace Exercise1
         /// <summary>
         /// Asks user whether to end program or start again.
         /// </summary>
-        public void End()
+        public void EndOrAgain()
         {
             do
             {

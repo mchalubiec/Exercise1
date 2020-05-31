@@ -8,15 +8,12 @@
 
             while (true)
             {
-                act.Start();
+                act.GetStringAndValidate();
+                act.ConvertString();
                 if (act.validate == true)
                 {
-                    act.ConvertString();
-                    if (act.validate == true)
-                    {
-                        act.Display();
-                        act.End();
-                    }
+                    act.DisplayTasks();
+                    act.EndOrAgain();
                 }
             }
         }
