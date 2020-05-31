@@ -15,11 +15,7 @@
                     if (act.validate == true)
                     {
                         act.Display();
-                        do
-                        {
-                            act.End();
-                        }
-                        while (act.exit == false);
+                        act.End();
                     }
                 }
             }

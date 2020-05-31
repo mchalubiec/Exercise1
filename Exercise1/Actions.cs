@@ -137,18 +137,19 @@ namespace Exercise1
         /// </summary>
         public void End()
         {
-            msg.DisplayText("Czy chcesz spróbować ponownie? (Y/N)");
-            endKey = Console.ReadKey(true);
-            if (endKey.Key == ConsoleKey.N)
+            do
             {
-                Environment.Exit(0);
-            }
-            if (endKey.Key == ConsoleKey.Y)
-            {
-                exit = true;
-                return;
-            }
-            else { exit = false; msg.DisplayErrorText("Nie rozpoznano klawisza."); }
+                msg.DisplayText("Czy chcesz spróbować ponownie? (Y/N)");
+                endKey = Console.ReadKey(true);
+                if (endKey.Key != ConsoleKey.N && endKey.Key != ConsoleKey.Y)
+                {
+                    msg.DisplayErrorText("Nie rozpoznano klawisza.");                    
+                }
+                if (endKey.Key == ConsoleKey.N)
+                {
+                    Environment.Exit(0);
+                }
+            } while (endKey.Key != ConsoleKey.Y);
         }
         #endregion
     }
