@@ -8,8 +8,8 @@
 
             while (true)
             {
-                act.GetStringAndValidate();
-                act.ConvertString();
+                act.GetStringIfNoEmpty();
+                act.ConvertStringAndValidate();
                 if (act.validate == true)
                 {
                     act.DisplayTasks();

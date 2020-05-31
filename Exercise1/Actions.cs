@@ -5,36 +5,38 @@ namespace Exercise1
 {
     class Actions
     {
+        #region Objects
         Messages msg = new Messages();
-
-        #region Fields
-        public string userString;
-        public string[] arrayString;
-        public int[] arrayInt;
-        public bool validate;
-        public bool isParsable;
+        #endregion
+        #region Private Fields
+        private string userString;
+        private string[] arrayString;
+        private int[] arrayInt;
         private ConsoleKeyInfo endKey;
+        #endregion
+        #region Public Fields
+        public bool validate;
         #endregion
         #region Methods
         /// <summary>
         /// Displays instruction, get string from user and validate is it empty.
         /// </summary>
-        public void GetStringAndValidate()
+        public void GetStringIfNoEmpty()
         {
             do
             {
                 msg.DisplayText("Podaj ciąg liczbowy (dowolnej długości), oddzielając cyfry przecinkiem: ");
                 userString = Console.ReadLine();
-                if (String.IsNullOrEmpty(userString))
+                if (string.IsNullOrWhiteSpace(userString))
                 {
                     msg.DisplayErrorText("Nie podałeś żadnego ciągu.");
                 }
-            } while (String.IsNullOrEmpty(userString));
+            } while (string.IsNullOrWhiteSpace(userString));
         }
         /// <summary>
-        /// Converts user string to array string, next converts to array int with validate.
+        /// Trys to convert user string to array int and validates is it possible.
         /// </summary>
-        public void ConvertString()
+        public void ConvertStringAndValidate()
         {
             arrayString = userString.Split(',');
 
@@ -44,9 +46,7 @@ namespace Exercise1
                 if (!String.IsNullOrEmpty(value))
                 {
                     int result;
-                    validate = true;
-                    isParsable = int.TryParse(value, out result);
-                    if (isParsable)
+                    if (int.TryParse(value, out result))
                     {
                         list.Add(result);
                     }
@@ -54,6 +54,7 @@ namespace Exercise1
                 }
                 else { validate = false; msg.DisplayErrorText("W podanym ciągu brakuje liczb(y)."); return; }
             }
+            validate = true;
             arrayInt = list.ToArray();
         }
         /// <summary>
@@ -126,6 +127,7 @@ namespace Exercise1
             else { Console.WriteLine($"d. Suma ciągu wynosi: {score} i jest liczbą nieparzystą."); }
             Console.WriteLine();
         }
+
         /// <summary>
         /// Asks user whether to end program or start again.
         /// </summary>
